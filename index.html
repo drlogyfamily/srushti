@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Teachers Day | Dr. Vishal Sir</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a235a 100%);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+        
+        .gift-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: #1a1a1a;
+            transition: all 0.5s ease;
+            position: relative;
+            min-height: 400px;
+        }
+        
+        .gift-box {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #8e44ad 0%, #3498db 100%);
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .gift-box:hover {
+            transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        .gift-box:before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 180px;
+            background: linear-gradient(135deg, #3498db 0%, #8e44ad 100%);
+            border-radius: 10px;
+        }
+        
+        .gift-box:after {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 30px;
+            background: linear-gradient(135deg, #3498db 0%, #8e44ad 100%);
+            border-radius: 10px;
+        }
+        
+        .gift-lid {
+            width: 200px;
+            height: 40px;
+            background: linear-gradient(135deg, #2c3e50 0%, #8e44ad 100%);
+            border-radius: 10px;
+            position: absolute;
+            top: -20px;
+            transition: all 0.5s ease;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+            z-index: 11;
+        }
+        
+        .ribbon {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #d4af37;
+            border-radius: 50%;
+            z-index: 12;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+        }
+        
+        .gift-message {
+            margin-top: 30px;
+            font-size: 1.4rem;
+            color: #d4af37;
+            text-align: center;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        
+        .letter {
+            padding: 40px;
+            display: none;
+            background: #121212;
+            color: #e0e0e0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(65, 65, 65, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(65, 65, 65, 0.1) 0%, transparent 20%);
+        }
+        
+        .letter-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .letter-header h2 {
+            font-size: 2.2rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        
+        .letter-header p {
+            color: #b8b8b8;
+        }
+        
+        .letter-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            text-align: justify;
+        }
+        
+        .letter-content p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            color: #d4af37;
+            font-weight: 600;
+        }
+        
+        .signatures {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .signature {
+            text-align: center;
+            margin: 15px;
+        }
+        
+        .signature p {
+            font-weight: 600;
+            color: #d4af37;
+            margin-bottom: 5px;
+        }
+        
+        .signature span {
+            color: #8e44ad;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            opacity: 0;
+            animation: confettiFall 5s linear infinite;
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 60px;
+            border-radius: 50%;
+            bottom: -100px;
+            opacity: 0;
+            animation: floatBalloon 15s ease-in forwards;
+            z-index: 5;
+        }
+        
+        .balloon:before {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.7);
+            bottom: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        @keyframes floatBalloon {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-300px) rotate(15deg);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-800px) rotate(-10deg);
+                opacity: 0;
+            }
+        }
+        
+        .open-animation {
+            animation: openGift 1s forwards;
+        }
+        
+        @keyframes openGift {
+            0% {
+                transform: perspective(1000px) rotateX(0) rotateY(0);
+            }
+            50% {
+                transform: perspective(1000px) rotateX(-30deg) rotateY(-10deg);
+            }
+            100% {
+                transform: perspective(1000px) rotateX(-60deg) rotateY(-20deg) scale(0.9);
+            }
+        }
+        
+        .open-lid {
+            animation: openLid 1s forwards;
+        }
+        
+        @keyframes openLid {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(-10deg);
+            }
+        }
+        
+        .teachers-day {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.8rem;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .gift-box {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .gift-box:before {
+                height: 150px;
+            }
+            
+            .gift-box:after {
+                width: 150px;
+            }
+            
+            .letter {
+                padding: 25px;
+            }
+            
+            .letter-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .letter-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="teachers-day">
+        <h2>Happy Teachers Day!</h2>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Drlogy Technologies</h1>
+            <div class="subtitle">A Special Tribute to Srushti</div>
+        </div>
+        
+        <div class="gift-container" id="giftContainer">
+            <div class="gift-box" id="giftBox">
+                <div class="gift-lid" id="giftLid"></div>
+                <div class="ribbon" style="top: -10px; left: 70px;"></div>
+                <div class="ribbon" style="top: 70px; left: -10px;"></div>
+                <div class="ribbon" style="bottom: -10px; right: 70px;"></div>
+                <div class="ribbon" style="bottom: 70px; right: -10px;"></div>
+                <i class="fas fa-gift" style="font-size: 60px; color: #fff; z-index: 13;"></i>
+            </div>
+            <div class="gift-message">Click on the gift box to reveal your special message!</div>
+        </div>
+        
+        <div class="letter" id="letter">
+            <div class="letter-header">
+                <h2>Happy Teachers Day!</h2>
+                <p>Date: 5th September, 2025</p>
+            </div>
+            
+<div class="letter-content">
+    <p>Happy Teachers Day to <strong class="highlight">Srushti</strong>,</p>
+    
+    <p>Every company has a soul and for us, you are the heart that keeps our emotional bonds alive. With your friendly nature, open heart, and willingness to help everyone, you’ve created a family-like connection within our team.</p>
+    
+    <p>Your emotional side is not a weakness — it’s your strength. It’s what makes you deeply human, caring, and connected. Yes, sometimes you get angry over small things, but even that shows your straightforwardness and honesty — qualities that make you a genuine person we can always trust.</p>
+    
+    <p>What we admire most is the way you carry both friendship and responsibility together, making everyone feel supported and valued. You’ve taught us that kindness, warmth, and true connections are as important as professional skills in any journey.</p>
+    
+    <p>As you step into the next beautiful chapter of your life through marriage, we wish you endless happiness, love, and fulfillment. Just as you’ve been the heart of this family here, we know you’ll bring the same warmth and joy into your new family too.</p>
+    
+    <p>From the Drlogy family, we say: Thank you for being not just a colleague, but a true friend, guide, caring person and emotional anchor for all of us when we needed help.</p>
+    
+    <p class="highlight">Remember:</p>
+    <p>In this journey, we’re not just a team but we’re a family.</p>
+    <p>What truly matters is not just the milestones we achieve, but the people we become along the way.</p>
+    <p>Every challenge refines us, every lesson shapes us & every shared moment makes us stronger together.</p>
+    <p>Our real legacy will not be in numbers, but in the lives we inspire and the hope & solution we spread through our work in healthcare space.</p>
+    
+    <p>Once again thank you for all valuable lessons & leaning from your side. Smile & best wishes to you and your family. Your support, guidance & help means a lot to us.</p>
+</div>
+
+
+                
+                <div class="signatures">
+                    <div class="signature">
+                        <p>Dr. Mayur Patel</p>
+                        <span>Drlogy</span>
+                    </div>
+                    <div class="signature">
+                        <p>Dr. Vishal Patel</p>
+                        <span>Drlogy</span>
+                    </div>
+                    <div class="signature">
+                        <p>And</p>
+                        <span>Drlogy Team</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const giftBox = document.getElementById('giftBox');
+            const giftLid = document.getElementById('giftLid');
+            const giftContainer = document.getElementById('giftContainer');
+            const letter = document.getElementById('letter');
+            let balloonsCreated = false;
+            
+            // Create confetti
+            function createConfetti() {
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#ffbe0b', '#fb5607', '#8338ec', '#d4af37'];
+                
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = (10 + Math.random() * 10) + 'px';
+                    confetti.style.height = (10 + Math.random() * 10) + 'px';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.animationDelay = Math.random() * 5 + 's';
+                    document.body.appendChild(confetti);
+                }
+            }
+            
+            // Create floating balloons
+            function createBalloons() {
+                if (balloonsCreated) return;
+                balloonsCreated = true;
+                
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#ffbe0b', '#fb5607', '#8338ec', '#3a86ff', '#ff006e', '#d4af37'];
+                
+                for (let i = 0; i < 20; i++) {
+                    const balloon = document.createElement('div');
+                    balloon.className = 'balloon';
+                    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    balloon.style.left = Math.random() * 80 + 10 + 'vw';
+                    balloon.style.animationDelay = (i * 0.3) + 's';
+                    
+                    // Add balloon knot
+                    const knot = document.createElement('div');
+                    knot.style.width = '10px';
+                    knot.style.height = '10px';
+                    knot.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                    knot.style.borderRadius = '50%';
+                    knot.style.position = 'absolute';
+                    knot.style.bottom = '-40px';
+                    knot.style.left = '50%';
+                    knot.style.transform = 'translateX(-50%)';
+                    balloon.appendChild(knot);
+                    
+                    document.body.appendChild(balloon);
+                }
+            }
+            
+            giftBox.addEventListener('click', function() {
+                // Add animations
+                giftBox.classList.add('open-animation');
+                giftLid.classList.add('open-lid');
+                
+                // Create celebration effects
+                createConfetti();
+                createBalloons();
+                
+                // Show letter after animation
+                setTimeout(function() {
+                    giftContainer.style.display = 'none';
+                    letter.style.display = 'block';
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
